@@ -20,7 +20,7 @@ A small but realistic JWT-secured REST service migrated from a legacy stack to a
 
 ```bash
 # legacy
-git checkout main && mvn test            # needs JDK 11+ (works on 17/21 too)
+git checkout main && mvn test            # JDK 11 or 17 (Boot 2.7 + Hibernate 5 are not certified on 21)
 
 # migrated
 git checkout migrated && mvn test        # needs JDK 21
