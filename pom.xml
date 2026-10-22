@@ -21,7 +21,7 @@
         <java.version>21</java.version>
         <maven.compiler.release>21</maven.compiler.release>
         <jjwt.version>0.11.5</jjwt.version>
-        <springfox.version>3.0.0</springfox.version>
+        <springdoc.version>2.6.0</springdoc.version>
     </properties>
 
     <dependencies>
@@ -71,11 +71,11 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- Swagger (Springfox) - abandoned, breaks on Boot 3 -->
+        <!-- OpenAPI docs: springdoc replaces the abandoned Springfox -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${springfox.version}</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <dependency>

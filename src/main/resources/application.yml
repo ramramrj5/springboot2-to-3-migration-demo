@@ -14,9 +14,6 @@ spring:
   h2:
     console:
       enabled: true
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher   # Springfox 3 breaks on the default PathPatternParser
 
 app:
   jwt:
