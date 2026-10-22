@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>3.3.5</version>
         <relativePath/>
     </parent>
 
@@ -15,11 +15,11 @@
     <artifactId>library-api</artifactId>
     <version>1.0.0</version>
     <name>library-api</name>
-    <description>Legacy Spring Boot 2.7 / Java 11 service used as the starting point for a Boot 3 migration</description>
+    <description>Same service migrated to Spring Boot 3.3 / Java 21</description>
 
     <properties>
-        <java.version>11</java.version>
-        <maven.compiler.release>11</maven.compiler.release>
+        <java.version>21</java.version>
+        <maven.compiler.release>21</maven.compiler.release>
         <jjwt.version>0.11.5</jjwt.version>
         <springfox.version>3.0.0</springfox.version>
     </properties>
