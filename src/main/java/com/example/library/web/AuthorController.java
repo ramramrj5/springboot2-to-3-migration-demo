@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/authors")
@@ -22,22 +21,17 @@ public class AuthorController {
         this.authorRepository = authorRepository;
     }
 
-    /**
-     * Classic N+1: findAll() loads authors in 1 query, then each author.getBooks()
-     * triggers one more SELECT. 20 authors => 21 queries.
-     */
+    /** One query: authors LEFT JOIN books via @EntityGraph. Was 21 queries on the legacy branch. */
     @GetMapping
     @Transactional(readOnly = true)
     public List<AuthorResponse> all() {
-        return authorRepository.findAll().stream()
+        return authorRepository.findAllWithBooks().stream()
                 .map(this::toResponse)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private AuthorResponse toResponse(Author a) {
-        List<String> titles = a.getBooks().stream()
-                .map(Book::getTitle)
-                .collect(Collectors.toList());
+        List<String> titles = a.getBooks().stream().map(Book::getTitle).toList();
         return new AuthorResponse(a.getId(), a.getName(), a.getCountry(), titles);
     }
 }

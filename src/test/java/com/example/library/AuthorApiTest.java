@@ -58,16 +58,17 @@ class AuthorApiTest {
     }
 
     @Test
-    void listingAuthorsHasNPlusOneProblem() throws Exception {
+    void listingAuthorsRunsASingleQuery() throws Exception {
         String token = login("reader", "reader");
         stats.clear();
 
         mvc.perform(get("/api/authors").header("Authorization", "Bearer " + token))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(20));
 
-        // 1 query for authors + 20 lazy collection loads. This is the bug the migration fixes.
+        // @EntityGraph: authors LEFT JOIN books in one statement (legacy branch: 21).
         long selects = stats.getPrepareStatementCount();
-        assertThat(selects).isEqualTo(21);
+        assertThat(selects).isEqualTo(1);
     }
 
     private String login(String user, String pass) throws Exception {
