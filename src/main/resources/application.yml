@@ -14,6 +14,9 @@ spring:
   h2:
     console:
       enabled: true
+  threads:
+    virtual:
+      enabled: true   # Java 21 virtual threads for Tomcat + @Async (Boot 3.2+)
 
 app:
   jwt:
