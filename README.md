@@ -1,5 +1,7 @@
 # Spring Boot 2.7 → 3.3 / Java 11 → 21 migration, step by step
 
+[![build](https://github.com/ramramrj5/springboot2-to-3-migration-demo/actions/workflows/build.yml/badge.svg)](https://github.com/ramramrj5/springboot2-to-3-migration-demo/actions/workflows/build.yml)
+
 A small but realistic JWT-secured REST service migrated from a legacy stack to a current one, **one breaking change per commit**, with the same test suite passing on both ends.
 
 | | `main` (legacy) | `migrated` |
